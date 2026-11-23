@@ -1,14 +1,14 @@
 # Customer Churn Prediction
 
-Train and serve a churn classifier on the public Telco Customer Churn dataset (7,043 customers): scikit-learn pipelines with proper preprocessing, honest held-out metrics, model selection by ROC AUC, and a FastAPI prediction endpoint.
+Train and serve a churn classifier on the public Telco Customer Churn dataset (ships as a 1,600-customer stratified sample; full dataset: https://raw.githubusercontent.com/IBM/telco-customer-churn-on-icp4d/master/data/Telco-Customer-Churn.csv): scikit-learn pipelines with proper preprocessing, honest held-out metrics, model selection by ROC AUC, and a FastAPI prediction endpoint.
 
 ## Results (real, held-out 20% test split, seed 42)
 
 ```
 train=5634 test=1409 churn_rate=0.265
-logistic_regression: accuracy=0.8055  precision=0.6572  recall=0.5588  f1=0.604  roc_auc=0.8421
-random_forest:       accuracy=0.7835  precision=0.6186  recall=0.4813  f1=0.5414  roc_auc=0.8206
-saved churn-model.joblib (logistic_regression, roc_auc=0.8421)
+logistic_regression: accuracy=0.7875  precision=0.6104  recall=0.5529  f1=0.5802  roc_auc=0.8352
+random_forest:       accuracy=0.7906  precision=0.6216  recall=0.5412  f1=0.5786  roc_auc=0.805
+saved churn-model.joblib (logistic_regression, roc_auc=0.8352)
 ```
 
 Logistic regression wins on ROC AUC here and is the model that gets saved and served. The class balance (26.5% churn) is why accuracy alone would be misleading: a model that never predicts churn already scores 73.5%.
